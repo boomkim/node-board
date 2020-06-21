@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <p><%= post.title %></p> 
+    <p><%= post.author %></p>
+    <p><%= post.date %></p>
+    <p><%= post.body %></p>
+    </form>
+    <br/>
+    <p>
+      삭제
+    </p>
+    <div id="deleteForm">
+      <input type="password" placeholder="글 비밀번호" name="password" id="password"/>
+      <button onclick="submitDelete(event)">삭제</button>
+    </div>
+    <script>
+      function submitDelete(e) {
+        e.preventDefault();
+
+        let _id = "<%= post._id %>";
+        let password = document.querySelector("input#password").value;
+
+        console.log(password);
+        fetch("/posts/"+_id, {
+          method: "delete",
+          headers : {
+            "X-Delete-Password" : password
+          }
+        }).then( res => {
+          alert("삭제 성공");
+          window.location.href='/';
+        }).catch( err => {
+          console.log(err);
+        });
+      }
+    </script>
+  </body>
+</html>

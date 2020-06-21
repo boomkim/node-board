@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <p>
+      <table>
+        <tr>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>작성시간</th>
+        </tr>
+        <% posts.forEach(function(post) { %>
+          <tr>
+            <td><a href="/posts/<%= post._id %>"><%= post.title %></a></td> 
+            <td><%= post.author %></td>
+            <td><%= post.date %></td>
+          </tr>
+        <% }) %>
+      </table>
+    </p>
+    <p>
+      <a href="/new"><button>new</button></a>
+    </p>
+  </body>
+</html>

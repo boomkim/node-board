@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>삭제요청</title>
+</head>
+<body>
+    <p>설정하신 비밀번호를 입력하세요.</p>
+    <form method="POST" action="/posts/<%= _id %>">
+        <input type="hidden" name="_method" value="delete"/>
+        <input type="password" placeholder="비밀번호" id="password"/>
+        <input type="submit"/>
+    </form>
+</body>
+</html>
